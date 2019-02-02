@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
 import CameraIcon from '@material-ui/icons/PhotoCamera'
-import LinkIcon from '@material-ui/icons/Link'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -26,7 +25,7 @@ import elephantears from './img/elephantears.png'
 import honeycreekschool from './img/honeycreekschool.png'
 import morganandyork from './img/morganandyork.png'
 
-import superagent from "superagent"
+import {getDadJoke} from "./dadJokeService"
 
 const styles = theme => ({
   appBar:      {
@@ -135,17 +134,11 @@ class Album extends React.Component {
     this.state = {...props, openDialog: false, joke: undefined}
   }
 
-  async getDadJoke() {
-    return await superagent
-        .get('https://icanhazdadjoke.com/')
-        .set('accept', 'text/plain')
-  }
-
   handleClick = async () => {
-    const joke = await this.getDadJoke()
+    const joke = await getDadJoke()
     this.setState({
       openDialog: true,
-      joke:       joke.text
+      joke
     })
   }
 
@@ -155,6 +148,9 @@ class Album extends React.Component {
 
   render() {
     const classes = this.state.classes
+    const noUnderline = {
+      textDecoration: 'none'
+    }
     return (
         <React.Fragment>
           <CssBaseline/>
@@ -202,16 +198,16 @@ class Album extends React.Component {
                         <CardMedia
                             className={classes.cardMedia}
                             image={card.image} // eslint-disable-line max-len
-                            title="Image title"
+                            title={card.heading}
                         />
                         <CardContent className={classes.cardContent}>
                           <Typography gutterBottom variant="h5" component="h2">
-                            {card.heading}
+                            {card.link && <a href={card.link} style={noUnderline}>{card.heading}</a>}
+                            {!card.link && card.heading}
                           </Typography>
                           <Typography>
                             {card.description}
                           </Typography>
-                          {card.link && <a href={card.link}><LinkIcon className={classes.icon}/></a>}
                         </CardContent>
                       </Card>
                     </Grid>
