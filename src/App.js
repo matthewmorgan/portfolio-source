@@ -86,22 +86,22 @@ const cards = [
   },
   {
     heading:     'POS Web App',
-    description: 'A tablet optimized point of sale system design for a fast-paced coffeehouse.  Build with Backbone on Node, Espress, and MongoDB',
+    description: 'A tablet optimized point of sale system design for a fast-paced coffeehouse.  Built with Backbone on Node, Express, and MongoDB',
     image:       buzzonline
   },
   {
     heading:     'Bread Point of Sale',
-    description: 'A touchscreen optimized retail point of sale and inventory control system.  Built in Java SE and Postgres',
+    description: 'A touchscreen optimized multi-client desktop retail point of sale and inventory control system.  Built in Java SE and Postgres',
     image:       bread
   },
   {
     heading:     'E-Commerce Site',
-    description: "A web app built for a children's clothing store, built with Express and integrated with their bricks and mortar POS through an API written in Express over Postgres",
+    description: "A web app built for a children's clothing store, built with Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres",
     image:       elephantears
   },
   {
     heading:     'E-Commerce Site',
-    description: 'A web app built for a specialty grocery store, using Express and integrated with their bricks and mortar POS through an API written in Express over Postgres',
+    description: "A web app built for a specialty grocery store, using Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres",
     image:       morganandyork
   },
   {
