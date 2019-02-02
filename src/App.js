@@ -17,12 +17,15 @@ import {withStyles} from '@material-ui/core/styles'
 import AlertDialog from './AlertDialog'
 
 import understanding from './img/understanding.png'
+import semjs from './img/semjs.png'
+import exercism from './img/exercism.png'
 import bread from './img/breadpos.png'
 import buzz from './img/buzzdesktop.png'
 import buzzonline from './img/buzzonline.png'
 import elephantears from './img/elephantears.png'
 import honeycreekschool from './img/honeycreekschool.png'
 import morganandyork from './img/morganandyork.png'
+
 import superagent from "superagent"
 
 const styles = theme => ({
@@ -84,7 +87,19 @@ const cards = [
     heading:     'Honeycreek School',
     description: 'A website built for a community school for social sharing of messages and photos',
     image:       honeycreekschool,
-    link:       'http://party.honeycreekschool.org'
+    link:        'http://party.honeycreekschool.org'
+  },
+  {
+    heading:     'exercism.io',
+    description: 'I was a maintainer and contributor to this developer education project from 2014-2019, focused primarily on the JavaScript track',
+    image:       exercism,
+    link:        'https://exercism.io'
+  },
+  {
+    heading:     'SEM.js',
+    description: 'I have been on the leadership committee of this local JavaScript focused meetup for the last two years, and helped to run the mentorship study group during much of that time.',
+    image:       semjs,
+    link:        'https://www.meetup.com/SEM-JS/'
   },
   {
     heading:     'POS Web App',
@@ -130,16 +145,16 @@ class Album extends React.Component {
     const joke = await this.getDadJoke()
     this.setState({
       openDialog: true,
-      joke: joke.text
+      joke:       joke.text
     })
   }
 
   handleDialogClose = () => {
-    this.setState({ openDialog: false });
-  };
+    this.setState({openDialog: false})
+  }
 
   render() {
-    const classes = this.state.classes;
+    const classes = this.state.classes
     return (
         <React.Fragment>
           <CssBaseline/>
