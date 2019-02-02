@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
 import CameraIcon from '@material-ui/icons/PhotoCamera'
+import LinkIcon from '@material-ui/icons/Link'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -77,12 +78,13 @@ const cards = [
     heading:     'JSTOR Understanding Series',
     description: 'A web application to assist high school students in researching works of literature and historical documents.  Built at Ithaka in Vue.',
     image:       understanding,
-    href:        'https://www.jstor.org/understand'
+    link:        'https://www.jstor.org/understand'
   },
   {
     heading:     'Honeycreek School',
     description: 'A website built for a community school for social sharing of messages and photos',
-    image:       honeycreekschool
+    image:       honeycreekschool,
+    link:       'http://party.honeycreekschool.org'
   },
   {
     heading:     'POS Web App',
@@ -194,6 +196,7 @@ class Album extends React.Component {
                           <Typography>
                             {card.description}
                           </Typography>
+                          {card.link && <a href={card.link}><LinkIcon className={classes.icon}/></a>}
                         </CardContent>
                       </Card>
                     </Grid>
