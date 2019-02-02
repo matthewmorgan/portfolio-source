@@ -19,7 +19,7 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://matthewmorgan.github.io/portfolio",
+  "homepage": "https://matthewmorgan.github.io",
   "eslintConfig": {
     "extends": "react-app"
   },
