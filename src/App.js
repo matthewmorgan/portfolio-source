@@ -224,6 +224,9 @@ class Album extends React.Component {
             <Typography variant="h6" align="center" gutterBottom>
               Thanks for checking it out!
             </Typography>
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+              Built in React using Material Design components and styles
+            </Typography>
           </footer>
           {/* End footer */}
         </React.Fragment>
