@@ -27,6 +27,15 @@ import morganandyork from './img/morganandyork.png'
 
 import {getDadJoke} from "./dadJokeService"
 
+import ReactGA from 'react-ga'
+
+
+function initializeReactGA() {
+  ReactGA.initialize('UA-133728378-1');
+  ReactGA.pageview('/homepage');
+}
+
+
 const styles = theme => ({
   appBar:      {
     position: 'relative',
@@ -127,6 +136,8 @@ const cards = [
   },
 ]
 
+initializeReactGA();
+
 class Album extends React.Component {
 
   constructor(props) {
@@ -140,10 +151,18 @@ class Album extends React.Component {
       openDialog: true,
       joke
     })
+    ReactGA.event({
+      category: 'Engagement',
+      action: 'Open Joke Dialog'
+    });
   }
 
   handleDialogClose = () => {
     this.setState({openDialog: false})
+    ReactGA.event({
+      category: 'Engagement',
+      action: 'Close Joke Dialog'
+    });
   }
 
   render() {
