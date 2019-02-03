@@ -165,6 +165,14 @@ class Album extends React.Component {
     });
   }
 
+  trackLink = (link) => {
+    ReactGA.event({
+      category: 'Link',
+      action: `Link to ${link}`
+    });
+    return false;
+  }
+
   render() {
     const classes = this.state.classes
     const noUnderline = {
@@ -194,7 +202,7 @@ class Album extends React.Component {
                 <div className={classes.heroButtons}>
                   <Grid container spacing={16} justify="center">
                     <Grid item>
-                      <Button variant="contained" color="primary" href="https://github.com/matthewmorgan">
+                      <Button variant="contained" color="primary" href="https://github.com/matthewmorgan" rel="noopener noreferrer" target="_blank" onClick={() => {this.trackLink("https://github.com/matthewmorgan")}}>
                         See my GitHub
                       </Button>
                     </Grid>
@@ -221,7 +229,7 @@ class Album extends React.Component {
                         />
                         <CardContent className={classes.cardContent}>
                           <Typography gutterBottom variant="h5" component="h2">
-                            {card.link && <a href={card.link} style={noUnderline}>{card.heading}</a>}
+                            {card.link && <a href={card.link} style={noUnderline} target="_blank" rel="noopener noreferrer" onClick={() => {this.trackLink(card.link)}}>{card.heading}</a>}
                             {!card.link && card.heading}
                           </Typography>
                           <Typography>
