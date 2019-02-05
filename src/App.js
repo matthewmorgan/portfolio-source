@@ -142,13 +142,13 @@ class Album extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {...props, openDialog: false, joke: undefined}
+    this.state = {...props, open: false, joke: undefined}
   }
 
   handleClick = async () => {
     const joke = await getDadJoke()
     this.setState({
-      openDialog: true,
+      open: true,
       joke
     })
     ReactGA.event({
@@ -158,7 +158,7 @@ class Album extends React.Component {
   }
 
   handleDialogClose = () => {
-    this.setState({openDialog: false})
+    this.setState({open: false})
     ReactGA.event({
       category: 'Engagement',
       action: 'Close Joke Dialog'
@@ -215,7 +215,7 @@ class Album extends React.Component {
                 </div>
               </div>
             </div>
-            <AlertDialog open={this.state.openDialog} joke={this.state.joke} handleClose={this.handleDialogClose}/>
+            <AlertDialog {...this.state} handleClose={this.handleDialogClose}/>
             <div className={classNames(classes.layout, classes.cardGrid)}>
               {/* End hero unit */}
               <Grid container spacing={40}>
