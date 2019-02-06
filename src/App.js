@@ -149,7 +149,7 @@ const trackDialogEvent = (open) => {
   } else {
     ReactGA.event({
       category: 'Engagement',
-      action: 'Close Joke Dialog'
+      action: 'Open Joke Dialog'
     });
   }
 }
@@ -168,19 +168,21 @@ function Album(props) {
     textDecoration: 'none'
   }
 
-  const [ open, setOpen ] = useState(false);
+  const [ dialogState, setDialogState ] = useState({open: false, joke: ''});
 
-  const changeOpen = () => {
-    trackDialogEvent(open)
-    setOpen(!open)
+  const changeDialogState = async () => {
+    trackDialogEvent(dialogState.open)
+    if (dialogState.open){
+      setDialogState({open: false})
+    } else {
+      const joke = await getDadJoke()
+      setDialogState({
+        open: true,
+        joke
+      })
+    }
   }
 
-  const [ joke, setJoke ] = useState('');
-
-  const fetchJoke = async () => {
-    const joke = await getDadJoke()
-    setJoke(joke)
-  }
 
   return (
       <React.Fragment>
@@ -214,7 +216,7 @@ function Album(props) {
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="outlined" color="primary" onClick={() => {fetchJoke();changeOpen()}}>
+                    <Button variant="outlined" color="primary" onClick={changeDialogState}>
                       Enjoy a dad joke
                     </Button>
                   </Grid>
@@ -222,7 +224,7 @@ function Album(props) {
               </div>
             </div>
           </div>
-          <AlertDialog open={open} joke={joke} handleClose={changeOpen}/>
+          <AlertDialog {...dialogState} handleClose={changeDialogState}/>
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
             <Grid container spacing={40}>
