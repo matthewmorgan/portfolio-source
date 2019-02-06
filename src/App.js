@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import AppBar from '@material-ui/core/AppBar'
@@ -27,12 +27,13 @@ import morganandyork from './img/morganandyork.png'
 
 import {getDadJoke} from "./dadJokeService"
 
+
 import ReactGA from 'react-ga'
 
 
 function initializeReactGA() {
-  ReactGA.initialize('UA-133728378-1');
-  ReactGA.pageview('/homepage');
+  ReactGA.initialize('UA-133728378-1')
+  ReactGA.pageview('/homepage')
 }
 
 
@@ -136,125 +137,132 @@ const cards = [
   },
 ]
 
-initializeReactGA();
+initializeReactGA()
 
-class Album extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {...props, open: false, joke: undefined}
-  }
-
-  handleClick = async () => {
-    const joke = await getDadJoke()
-    this.setState({
-      open: true,
-      joke
-    })
+const trackDialogEvent = (open) => {
+  if(open){
     ReactGA.event({
       category: 'Engagement',
-      action: 'Open Joke Dialog'
+      action: 'Close Joke Dialog'
     });
-  }
-
-  handleDialogClose = () => {
-    this.setState({open: false})
+  } else {
     ReactGA.event({
       category: 'Engagement',
       action: 'Close Joke Dialog'
     });
   }
+}
 
-  trackLink = (link) => {
-    ReactGA.event({
-      category: 'Link',
-      action: `Link to ${link}`
-    });
-    return false;
+const trackLink = (link) => {
+  ReactGA.event({
+    category: 'Link',
+    action: `Link to ${link}`
+  });
+  return false;
+}
+
+function Album(props) {
+  const {classes} = {...props}
+  const noUnderline = {
+    textDecoration: 'none'
   }
 
-  render() {
-    const classes = this.state.classes
-    const noUnderline = {
-      textDecoration: 'none'
-    }
-    return (
-        <React.Fragment>
-          <CssBaseline/>
-          <AppBar position="static" className={classes.appBar}>
-            <Toolbar>
-              <CameraIcon className={classes.icon}/>
-              <Typography variant="h6" color="inherit" noWrap>
-                Matt Morgan's Projects
+  const [ open, setOpen ] = useState(false);
+
+  const changeOpen = () => {
+    trackDialogEvent(open)
+    setOpen(!open)
+  }
+
+  const [ joke, setJoke ] = useState('');
+
+  const fetchJoke = async () => {
+    const joke = await getDadJoke()
+    setJoke(joke)
+  }
+
+  return (
+      <React.Fragment>
+        <CssBaseline/>
+        <AppBar position="static" className={classes.appBar}>
+          <Toolbar>
+            <CameraIcon className={classes.icon}/>
+            <Typography variant="h6" color="inherit" noWrap>
+              Matt Morgan's Projects
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <main>
+          {/* Hero unit */}
+          <div className={classes.heroUnit}>
+            <div className={classes.heroContent}>
+              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                Matt Morgan
               </Typography>
-            </Toolbar>
-          </AppBar>
-          <main>
-            {/* Hero unit */}
-            <div className={classes.heroUnit}>
-              <div className={classes.heroContent}>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                  Matt Morgan
-                </Typography>
-                <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                  I write software, especially modern web applications.
-                </Typography>
-                <div className={classes.heroButtons}>
-                  <Grid container spacing={16} justify="center">
-                    <Grid item>
-                      <Button variant="contained" color="primary" href="https://github.com/matthewmorgan" rel="noopener noreferrer" target="_blank" onClick={() => {this.trackLink("https://github.com/matthewmorgan")}}>
-                        See my GitHub
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button variant="outlined" color="primary" onClick={this.handleClick}>
-                        Enjoy a dad joke
-                      </Button>
-                    </Grid>
+              <Typography variant="h6" align="center" color="textSecondary" paragraph>
+                I write software, especially modern web applications.
+              </Typography>
+              <div className={classes.heroButtons}>
+                <Grid container spacing={16} justify="center">
+                  <Grid item>
+                    <Button variant="contained" color="primary" href="https://github.com/matthewmorgan"
+                            rel="noopener noreferrer" target="_blank" onClick={() => {
+                      trackLink("https://github.com/matthewmorgan")
+                    }}>
+                      See my GitHub
+                    </Button>
                   </Grid>
-                </div>
+                  <Grid item>
+                    <Button variant="outlined" color="primary" onClick={() => {fetchJoke();changeOpen()}}>
+                      Enjoy a dad joke
+                    </Button>
+                  </Grid>
+                </Grid>
               </div>
             </div>
-            <AlertDialog {...this.state} handleClose={this.handleDialogClose}/>
-            <div className={classNames(classes.layout, classes.cardGrid)}>
-              {/* End hero unit */}
-              <Grid container spacing={40}>
-                {cards.map(card => (
-                    <Grid item key={card.description} sm={6} md={4} lg={3}>
-                      <Card className={classes.card}>
-                        <CardMedia
-                            className={classes.cardMedia}
-                            image={card.image} // eslint-disable-line max-len
-                            title={card.heading}
-                        />
-                        <CardContent className={classes.cardContent}>
-                          <Typography gutterBottom variant="h5" component="h2">
-                            {card.link && <a href={card.link} style={noUnderline} target="_blank" rel="noopener noreferrer" onClick={() => {this.trackLink(card.link)}}>{card.heading}</a>}
-                            {!card.link && card.heading}
-                          </Typography>
-                          <Typography>
-                            {card.description}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                ))}
-              </Grid>
-            </div>
-          </main>
-          {/* Footer */}
-          <footer className={classes.footer}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Thanks for checking it out!
-            </Typography>
-            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-              Built in React using Material Design components and styles
-            </Typography>
-          </footer>
-          {/* End footer */}
-        </React.Fragment>
-    )
-  }
+          </div>
+          <AlertDialog open={open} joke={joke} handleClose={changeOpen}/>
+          <div className={classNames(classes.layout, classes.cardGrid)}>
+            {/* End hero unit */}
+            <Grid container spacing={40}>
+              {cards.map(card => (
+                  <Grid item key={card.description} sm={6} md={4} lg={3}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                          className={classes.cardMedia}
+                          image={card.image} // eslint-disable-line max-len
+                          title={card.heading}
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {card.link &&
+                          <a href={card.link} style={noUnderline} target="_blank" rel="noopener noreferrer"
+                             onClick={() => {trackLink(card.link)}}>{card.heading}</a>}
+                          {!card.link && card.heading}
+                        </Typography>
+                        <Typography>
+                          {card.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+              ))}
+            </Grid>
+          </div>
+        </main>
+        {/* Footer */}
+        <footer className={classes.footer}>
+          <Typography variant="h6" align="center" gutterBottom>
+            Thanks for checking it out!
+          </Typography>
+          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+            Built in React using Material Design components and styles
+          </Typography>
+        </footer>
+        {/* End footer */}
+      </React.Fragment>
+  )
 }
 
 Album.propTypes = {
