@@ -113,7 +113,7 @@ const cards = [
   },
   {
     heading: 'SEM.js',
-    description: 'I have been on the leadership committee of this local JavaScript focused meetup for the last two years, and helped to run the mentorship study group during much of that time.',
+    description: 'I was on the leadership committee of this local JavaScript focused meetup for three years, and helped to run the mentorship study group during much of that time',
     image: semjs,
     link: 'https://www.meetup.com/SEM-JS/'
   },
