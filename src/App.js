@@ -89,7 +89,7 @@ const styles = theme => ({
 const cards = [
   {
     heading: 'Khan Academy',
-    description: 'A free online k-12 education for anyone, anywhere.  React, Python, Kotlin, and Go.',
+    description: "A free online k-12 education for anyone, anywhere.  React, Python, Kotlin, and Go.  I'm a software engineer here since 2019.",
     image: khanacademy,
     link: 'https://www.khanacademy.org/'
   },
