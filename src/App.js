@@ -15,16 +15,16 @@ import { withStyles } from '@material-ui/core/styles'
 
 import AlertDialog from './AlertDialog'
 
-import understanding from './img/understanding.png'
-import semjs from './img/semjs.png'
-import exercism from './img/exercism.png'
-import bread from './img/breadpos.png'
-import buzz from './img/buzzdesktop.png'
-import buzzonline from './img/buzzonline.png'
-import elephantears from './img/elephantears.png'
-import honeycreekschool from './img/honeycreekschool.png'
-import khanacademy from './img/khanacademy.png'
-import morganandyork from './img/morganandyork.png'
+import understanding from './img/understanding.webp'
+import semjs from './img/semjs.webp'
+import exercism from './img/exercism.webp'
+import bread from './img/breadpos.webp'
+import buzz from './img/buzzdesktop.webp'
+import buzzonline from './img/buzzonline.webp'
+import elephantears from './img/elephantears.webp'
+import honeycreekschool from './img/honeycreekschool.webp'
+import khanacademy from './img/khanacademy.webp'
+import morganandyork from './img/morganandyork.webp'
 
 import { getDadJoke } from "./dadJokeService"
 
