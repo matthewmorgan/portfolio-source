@@ -103,7 +103,7 @@ const cards = [
     heading: 'Honeycreek School',
     description: 'A website built for a community school for social sharing of messages and photos',
     image: honeycreekschool,
-    link: 'https://party.honeycreekschool.org'
+    link: 'http://party.honeycreekschool.org'
   },
   {
     heading: 'exercism.io',
