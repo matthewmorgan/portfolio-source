@@ -25,6 +25,7 @@ import elephantears from './img/elephantears.webp'
 import honeycreekschool from './img/honeycreekschool.webp'
 import khanacademy from './img/khanacademy.webp'
 import morganandyork from './img/morganandyork.webp'
+import roasters from './img/roasters.webp'
 
 import { getDadJoke } from "./dadJokeService"
 
@@ -94,6 +95,12 @@ const cards = [
     link: 'https://www.khanacademy.org/'
   },
   {
+    heading: 'Mobile Shopping',
+    description: "A mobile app written for a coffee roaster to allow online ordering and contactless communication.  Built with React Native and websockets for iOS.",
+    image: roasters,
+    link: 'https://apps.apple.com/us/app/small-world-roasters/id1516833820'
+  },
+  {
     heading: 'JSTOR Understanding Series',
     description: 'A web application to assist high school students in researching works of literature and historical documents.  Built at Ithaka in Vue.',
     image: understanding,
@@ -103,7 +110,6 @@ const cards = [
     heading: 'Honeycreek School',
     description: 'A website built for a community school for social sharing of messages and photos',
     image: honeycreekschool,
-    link: 'http://party.honeycreekschool.org'
   },
   {
     heading: 'exercism.io',
