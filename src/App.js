@@ -96,7 +96,7 @@ const cards = [
   },
   {
     heading: 'Mobile Shopping',
-    description: "A mobile app written for a coffee roaster to allow online ordering and contactless communication.  Built with React Native and websockets for iOS.",
+    description: "A mobile app written for a coffee roaster to allow online ordering and contactless communication.  Built in Typescript with React Native and websockets for iOS and Android.",
     image: roasters,
     link: 'https://apps.apple.com/us/app/small-world-roasters/id1516833820'
   },
@@ -108,44 +108,44 @@ const cards = [
   },
   {
     heading: 'Honeycreek School',
-    description: 'A website built for a community school for social sharing of messages and photos',
+    description: 'A website built for a community school for social sharing of messages and photos.',
     image: honeycreekschool,
   },
   {
     heading: 'exercism.io',
-    description: 'I was a maintainer and contributor to this developer education project from 2014-2019, focused primarily on the JavaScript track',
+    description: 'I was a maintainer and contributor to this developer education project from 2014-2019, focused primarily on the JavaScript track.',
     image: exercism,
     link: 'https://exercism.io'
   },
   {
     heading: 'SEM.js',
-    description: 'I was on the leadership committee of this local JavaScript focused meetup for three years, and helped to run the mentorship study group during much of that time',
+    description: 'I was on the leadership committee of this local JavaScript focused meetup for three years, and helped to run the mentorship study group during much of that time.',
     image: semjs,
     link: 'https://www.meetup.com/SEM-JS/'
   },
   {
     heading: 'POS Web App',
-    description: 'A tablet optimized point of sale system design for a fast-paced coffeehouse.  Built with Backbone on Node, Express, and MongoDB',
+    description: 'A tablet optimized point of sale system design for a fast-paced coffeehouse.  Built with Backbone on Node, Express, and MongoDB.',
     image: buzzonline
   },
   {
     heading: 'Bread Point of Sale',
-    description: 'A touchscreen optimized multi-client desktop retail point of sale and inventory control system.  Built in Java SE and Postgres',
+    description: 'A touchscreen optimized multi-client desktop retail point of sale and inventory control system.  Built in Java SE and Postgres.',
     image: bread
   },
   {
     heading: 'E-Commerce Site',
-    description: "A web app built for a children's clothing store, built with Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres",
+    description: "A web app built for a children's clothing store, built with Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres.",
     image: elephantears
   },
   {
     heading: 'E-Commerce Site',
-    description: "A web app built for a specialty grocery store, using Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres",
+    description: "A web app built for a specialty grocery store, using Express and integrated with the client's bricks and mortar POS through an API written in Express over Postgres.",
     image: morganandyork
   },
   {
     heading: 'Buzz Point of Sale',
-    description: 'A touchscreen optimized retail point of sale built for a fast-paced coffee house.  Java SE and Postgres',
+    description: 'A touchscreen optimized retail point of sale built for a fast-paced coffee house.  Java SE and Postgres.',
     image: buzz
   },
 ]
